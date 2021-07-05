@@ -1,0 +1,5 @@
+set -B                  # enable brace expansion
+
+for i in {1..200}; do
+  curl -X POST -d "password=p@ssword $i" http://localhost:8080/hash#
+done

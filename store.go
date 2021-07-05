@@ -54,7 +54,20 @@ func GetStats() Stats {
 	for _, duration := range durations {
 		total = total + int(duration.Microseconds())
 	}
-	return Stats{Total: length, Average: float64(total) / float64(length)}
+	if total > 0 {
+		return Stats{Total: length, Average: float64(total) / float64(length)}
+	} else {
+		return Stats{Total: 0, Average: 0}
+	}
+}
+
+func IsPending() bool {
+	for _, v := range Store {
+		if v.Pending {
+			return true
+		}
+	}
+	return false
 }
 
 // private helpers

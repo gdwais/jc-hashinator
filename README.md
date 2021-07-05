@@ -2,50 +2,30 @@
 
 simple api (written in golang)
 
-## Endpoints
+## Usage
 
-### GET - /stats
-```
-// return stat json
-{
-    "total": 1,  //int total of all passwords
-    "average": 123 //average time of processing
-}
-```
+established some quick scripts for usage 
 
-### POST - /hash
-
-payload example
-```
-password=passwordToHash
-```
-response example
-```
-// return int identifier
-```
-
-### GET - /hash/{id}
-response example
-```
-//return hashed password value
-```
-
-### GET - shutdown
-
-* new requests are rejected
-* wait for pending work to complete and then exit
-
-
+**bin/load** : fills up the store with 200 records
+**bin/stats** : returns a json object with total number of records and average duration of processing
+**bin/shutdown** : triggers a graceful shutdown. all incoming other requests are rejected and if anything is in progress waits until complete
+**bin/hash x** : gets the hash value for the appropriate requested record - example: bin/hash 1
 
 ## Architecture Overview
 * **Main** : endpoint and handler definitions
 * **Logger** : unified logging functions
-* **Auth** : authorization related functions
 * **Store** : data array and data manipulation functions
 * **Manager** : business logic
 
-## TODO - may not get to
-### Production quality `must haves
-* API Authentication via JWT
-* unified logging module
-* 
+## TODO 
+* ~~establish endpoints~~
+* ~~add store~~
+* ~~add manager~~
+* ~~wire up store to manager~~
+* ~~wire up endpoints to manager/store~~
+* ~~unified logging/output module~~
+* ~~build out scripts for quick testing~~
+* API Authentication via JWT or basic text key
+* unit tests
+* refactor shutdown to use channel
+* refactor main to use router 
