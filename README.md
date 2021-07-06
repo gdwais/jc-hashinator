@@ -22,7 +22,7 @@ I established some quick scripts for usage:
 
 ### Overview
 
-I wanted to give the application some basic structure without getting too bogged down in modules so I kept the application flat.  Separating code into manageable files helps to keep the application scaleable as functionality gets added.
+I wanted to give the application some basic structure without getting too bogged down in modules so I kept the application flat.  Separating code into manageable files helps to keep the application scaleable as functionality gets added.  Given more time I would modularize the application a bit more to further distinguish the different layers of functionality as well as making it potentially reuseable in other applications.
 
 #### **Main** 
 
