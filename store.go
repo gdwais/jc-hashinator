@@ -16,7 +16,7 @@ func GetHash(i int) string {
 
 func AddRecord() int {
 	id := next()
-	Store[id] = Record{Pending: true, Received: time.Now()}
+	Store[id] = Record{Received: time.Now()}
 	return id
 }
 
@@ -26,7 +26,6 @@ func CompleteRecord(request IdAndValue) bool {
 		record.Hash = request.Value
 		record.Completed = time.Now()
 		record.ProcessingTime = record.Completed.Sub(record.Received)
-		record.Pending = false
 		Store[request.Id] = record
 	}
 	return true
@@ -47,15 +46,6 @@ func GetStats() Stats {
 	} else {
 		return Stats{Total: 0, Average: 0}
 	}
-}
-
-func IsPending() bool {
-	for _, v := range Store {
-		if v.Pending {
-			return true
-		}
-	}
-	return false
 }
 
 // private helpers

@@ -18,7 +18,6 @@ var processCount int = 0
 
 type Record struct {
 	Hash           string
-	Pending        bool
 	Received       time.Time
 	Completed      time.Time
 	ProcessingTime time.Duration

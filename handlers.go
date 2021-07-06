@@ -66,7 +66,7 @@ func Middleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if shuttingDown {
 			w.WriteHeader(http.StatusUnauthorized)
-			w.Write([]byte("pending shutdown..."))
+			w.Write([]byte("awaiting shutdown..."))
 		} else {
 			authHeader := strings.Split(r.Header.Get("Authorization"), "Bearer ")
 			if len(authHeader) != 2 {
