@@ -5,19 +5,19 @@ import (
 	"net/http"
 )
 
-func logMessage(message string) {
+func LogMessage(message string) {
 	fmt.Println(message)
 }
 
-func logError(message string) {
+func LogError(message string) {
 	fmt.Println("ERROR! : " + message)
 }
 
-func httpError(w http.ResponseWriter) {
+func HttpError(w http.ResponseWriter) {
 	w.WriteHeader(http.StatusMethodNotAllowed)
-	httpOutput(w, "invalid http method")
+	HttpOutput(w, "invalid http method")
 }
 
-func httpOutput(w http.ResponseWriter, message string) {
+func HttpOutput(w http.ResponseWriter, message string) {
 	fmt.Fprintf(w, message)
 }

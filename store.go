@@ -2,21 +2,6 @@ package main
 
 import "time"
 
-var Store map[int]Record
-
-type Record struct {
-	Hash           string
-	Pending        bool
-	Received       time.Time
-	Completed      time.Time
-	ProcessingTime time.Duration
-}
-
-type Stats struct {
-	Total   int     `json:"total"`
-	Average float64 `json:"average"`
-}
-
 //public functions
 
 func GetHash(i int) string {
@@ -33,7 +18,7 @@ func AddRecord() int {
 	return i
 }
 
-func CompleteRecord(i int, hash string) {
+func CompleteRecord(i int, hash string) bool {
 	record, ok := Store[i]
 	if ok {
 		record.Hash = hash
@@ -42,6 +27,7 @@ func CompleteRecord(i int, hash string) {
 		record.Pending = false
 		Store[i] = record
 	}
+	return true
 }
 
 func GetStats() Stats {
