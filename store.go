@@ -1,6 +1,8 @@
 package main
 
-import "time"
+import (
+	"time"
+)
 
 //public functions
 
@@ -13,19 +15,19 @@ func GetHash(i int) string {
 }
 
 func AddRecord() int {
-	i := next()
-	Store[i] = Record{Pending: true, Received: time.Now()}
-	return i
+	id := next()
+	Store[id] = Record{Pending: true, Received: time.Now()}
+	return id
 }
 
-func CompleteRecord(i int, hash string) bool {
-	record, ok := Store[i]
+func CompleteRecord(request IdAndValue) bool {
+	record, ok := Store[request.Id]
 	if ok {
-		record.Hash = hash
+		record.Hash = request.Value
 		record.Completed = time.Now()
 		record.ProcessingTime = record.Completed.Sub(record.Received)
 		record.Pending = false
-		Store[i] = record
+		Store[request.Id] = record
 	}
 	return true
 }

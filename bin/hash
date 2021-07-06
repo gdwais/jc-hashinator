@@ -1,1 +1,1 @@
-curl -X GET http://localhost:8080/hash/$1
+curl -X GET -H "Authorization: Bearer IW4nt2W0rk4JumpCl0ud" http://localhost:8080/hash/$1

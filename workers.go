@@ -25,7 +25,7 @@ func EncryptionWorker(jobs <-chan IdAndValue, results chan<- IdAndValue) {
 func CompleteRecordWorker(jobs <-chan IdAndValue, results chan<- bool) {
 	for request := range jobs {
 		LogMessage("starting work on complete record : " + strconv.Itoa(request.Id))
-		result := CompleteRecord(request.Id, request.Value)
+		result := CompleteRecord(request)
 		LogMessage("completed work on complete record : " + strconv.Itoa(request.Id))
 		results <- result
 	}

@@ -1,5 +1,6 @@
 set -B                  # enable brace expansion
 
 for i in {1..200}; do
-  curl -X POST -d "password=p@ssword $i" http://localhost:8080/hash#
+  curl -X POST -d "password=p@ssword $i" -H "Authorization: Bearer IW4nt2W0rk4JumpCl0ud" http://localhost:8080/hash#
+  sleep 1
 done

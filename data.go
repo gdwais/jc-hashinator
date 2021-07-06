@@ -14,6 +14,7 @@ var completeRecordResults chan bool
 //misc
 var port string = "8080"
 var shuttingDown bool = false
+var processCount int = 0
 
 type Record struct {
 	Hash           string
